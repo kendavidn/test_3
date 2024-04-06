@@ -10,4 +10,4 @@ ggplot(iris %>% filter(Species == ith_species_name),
    geom_point()
 ```
 
-This is a paragraph about {{ith_species}}.
+This is the paragraph about {{ith_species}}.
