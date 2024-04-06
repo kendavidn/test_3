@@ -1,0 +1,25 @@
+---
+title: "Parametrized Sections with knit_expand()"
+output: prettydoc::html_pretty
+---
+
+# Main section
+
+```{r message = F}
+# Load packages 
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, here)
+```
+
+# Child sections
+
+```{r, results='asis'}
+# use knit_expand to generate multiple versions of the child document
+child_rmd_versions = map(unique(iris$Species),
+          function(ith_species) knitr::knit_expand(here('child.Rmd')))
+
+child_outputs = knitr::knit_child(text = unlist(child_rmd_versions), 
+                        quiet = TRUE)
+
+cat(child_outputs, sep = '\n')
+```

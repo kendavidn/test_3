@@ -1,0 +1,13 @@
+
+## Information about {{ith_species}}
+
+```{r}
+ith_species_name <- deparse(substitute( {{ ith_species}} )) 
+# need the above due to conflict with tidyverse curly curlies :(
+
+ggplot(iris %>% filter(Species == ith_species_name), 
+               aes(x = Sepal.Length, y = Sepal.Width)) +
+   geom_point()
+```
+
+This is a paragraph about {{ith_species}}.
